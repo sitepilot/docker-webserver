@@ -1,0 +1,13 @@
+# {{ sitepilot_managed }}
+version: '3.3'
+
+services:
+
+  web-1:
+    image: sitepilot/web:test
+    container_name: web-1
+    restart: always
+    ports:
+      - '6080:80'
+      - '6443:443'
+      - '6070:7080'
