@@ -89,7 +89,8 @@ USER $USER_NAME
 # ----- Checks ----- #
 RUN php -v \
     && wp --version \
-    && composer --version
+    && composer --version \
+    && msmtp --version
 
 ENTRYPOINT ["sudo", "--preserve-env", "/opt/sitepilot/scripts/entrypoint.sh"]
 
