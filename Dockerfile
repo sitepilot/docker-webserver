@@ -15,9 +15,14 @@ ENV USER_NAME=$USER_NAME
 
 ENV PHP_VERSION=$PHP_VERSION
 
+ENV MAIL_RELAY_PORT="587"
+ENV MAIL_RELAY_HOST="smtp.eu.mailgun.org"
+ENV MAIL_RELAY_USER="postmaster@example.com"
+ENV MAIL_RELAY_PASS="supersecret"
+
 # ----- Common ----- #
 
-RUN install_packages sudo less rsync ca-certificates curl wget nano
+RUN install_packages sudo less rsync ca-certificates curl wget nano msmtp
 
 # ----- Openlitespeed & PHP ----- #
 
