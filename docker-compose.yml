@@ -3,9 +3,9 @@ version: '3.3'
 
 services:
 
-  web-1:
-    image: sitepilot/web:test
-    container_name: web-1
+  webserver-test:
+    image: sitepilot/webserver:test
+    container_name: webserver-test
     restart: always
     ports:
       - '6080:80'
