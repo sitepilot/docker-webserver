@@ -22,7 +22,7 @@ ENV MAIL_RELAY_PASS="supersecret"
 
 # ----- Common ----- #
 
-RUN install_packages sudo less rsync ca-certificates curl wget nano msmtp
+RUN install_packages sudo less ca-certificates curl wget nano msmtp
 
 # ----- Openlitespeed & PHP ----- #
 
