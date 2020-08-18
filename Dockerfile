@@ -64,7 +64,7 @@ RUN addgroup --gid "$USER_GID" "$USER_NAME" \
     && adduser \
     --disabled-password \
     --gecos "" \
-    --home "/opt/sitepilot/site" \
+    --home "/opt/sitepilot" \
     --ingroup "$USER_NAME" \
     --no-create-home \
     --uid "$USER_ID" \
@@ -80,18 +80,19 @@ RUN chown -R sitepilot:sitepilot /opt/sitepilot/site
 
 # ----- Config ----- #
 
+USER $USER_NAME
+
 WORKDIR /opt/sitepilot/site/public
 
 EXPOSE 80 443 7080
 
-USER $USER_NAME
+ENTRYPOINT ["sudo", "--preserve-env", "/opt/sitepilot/scripts/entrypoint.sh"]
+
+CMD ["sudo", "/usr/local/lsws/bin/openlitespeed", "-d"]
 
 # ----- Checks ----- #
+
 RUN php -v \
     && wp --version \
     && composer --version \
     && msmtp --version
-
-ENTRYPOINT ["sudo", "--preserve-env", "/opt/sitepilot/scripts/entrypoint.sh"]
-
-CMD ["sudo", "/usr/local/lsws/bin/openlitespeed", "-d"]
