@@ -1,13 +1,11 @@
-# {{ sitepilot_managed }}
-version: '3.3'
+version: "3.3"
 
 services:
-
   webserver-test:
-    image: sitepilot/webserver:test
+    image: sitepilot/webserver:latest
     container_name: webserver-test
     restart: always
     ports:
-      - '6080:80'
-      - '6443:443'
-      - '6070:7080'
+      - "5080:80"
+      - "5443:443"
+      - "5070:7080"
